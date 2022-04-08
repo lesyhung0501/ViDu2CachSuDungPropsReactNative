@@ -1,10 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { Button, StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import Content from './Content'
 
 export default function App() {
+  let [count, setCount] = useState(0);
+  function handleClick() {
+    setCount(count + 1);
+  }
   return (
     <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
+      <Content content = {count} color = 'red' fontWeight = 'bold' fontSize = '30px'>
+        <Text style={{color: 'green', fontWeight: 'bold'}}>Hello Props</Text>
+      </Content>
+      <Button title="Increase" onPress={handleClick}></Button>
       <StatusBar style="auto" />
     </View>
   );
